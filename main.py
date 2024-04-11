@@ -1,23 +1,15 @@
-# initial version 
+# final version 
 
 from typing import List
 
 def twoSum(nums: List[int], target: int) -> List[int]:
     # YOUR ANSWER
-    num_indices = {}
-    for index, num in enumerate(nums):
-        complement = target - num
-        if complement in num_indices:
-            return [num_indices[complement], index]
+    num_index = {} #make a dictionary to store both index and number
+    for index, num in enumerate(nums): #use enumerate to keep track of the nums index
+        complement = target - num #check the complement first
+        if complement in num_index: #if complement already stored, return the complement and curent number index
+            return [num_index[complement], index]
         
-        num_indices[num] = index
+        num_index[num] = index #if not store just keep storing the num and index in the dictionary
     
-    return []
-
-# Example input
-nums = [7, 11, 2, 15]
-target = 9
-
-# Call the function and print the result
-result = twoSum(nums, target)
-print("Output:", result)
+    return [] #if no matching pairs found, return an empty list
